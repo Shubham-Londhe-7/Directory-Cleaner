@@ -1,4 +1,4 @@
-# 🧹 Marvellous Automation Script
+# 🧹 Automation Script
 
 This Python script is a **Directory Cleaner and Duplicate File Remover**, which identifies and deletes duplicate files from a specified directory and sends a log report via email. It can be scheduled to run at regular time intervals.
 
