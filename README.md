@@ -1,106 +1,105 @@
-# 🧹 Automation Script
+# Duplicate File Cleaner Automation
 
-This Python script is a **Directory Cleaner and Duplicate File Remover**, which identifies and deletes duplicate files from a specified directory and sends a log report via email. It can be scheduled to run at regular time intervals.
+## 📌 Overview
 
----
+Duplicate File Cleaner Automation is a Python-based directory
+maintenance tool that automatically scans folders, detects duplicate
+files using MD5 checksum comparison, deletes redundant copies while
+preserving one original file, generates detailed log reports, and sends
+email notifications with log attachments at scheduled intervals.
 
-## 📄 Features
+This project demonstrates practical implementation of file handling,
+hashing algorithms, scheduling, logging, automation, and SMTP-based
+email integration.
 
-- Calculates MD5 checksums to detect duplicate files.
-- Removes duplicate files automatically.
-- Creates a detailed log of all operations performed.
-- Sends the log as an email attachment to the provided email address.
-- Can be scheduled to run repeatedly at specified intervals using command-line arguments.
-- Provides help and usage instructions through command-line flags.
+------------------------------------------------------------------------
 
----
+## 🚀 Features
 
-## 📦 Requirements
+-   Recursive directory scanning
+-   Duplicate detection using MD5 hashing
+-   Automatic deletion of duplicate copies
+-   Timestamped log file generation
+-   Email notification with log attachment
+-   Scheduled execution using Python scheduler
+-   Command-line interface support
 
-- Python 3.x
-- Required libraries:
-  - `schedule`
-  - `smtplib`
-  - `hashlib`
-  - `email`
-  - `os`, `time`, `sys`
+------------------------------------------------------------------------
 
-To install missing libraries, use:
-```bash
+## 🛠️ Tech Stack
+
+-   Python 3
+-   hashlib (MD5 hashing)
+-   os (file system operations)
+-   schedule (automation scheduling)
+-   smtplib (email sending)
+-   email.message (email construction)
+
+------------------------------------------------------------------------
+
+## 📂 Project Structure
+
+    Duplicate-File-Cleaner/
+    │
+    ├── DuplicateFileRemoval.py
+    └── README.md
+
+------------------------------------------------------------------------
+
+## ▶️ Usage
+
+### Install dependencies
+
+``` bash
 pip install schedule
 ```
 
----
+### Run script
 
-## 🛠️ Script Files
-
-- `AddLogFileSendMail.py` – Main script for duplicate file detection, deletion, logging, and email.
-- `Marvellous/` – Folder where log files will be stored (auto-created if not present).
-
----
-
-## 🧾 Usage
-
-```bash
-python AddLogFileSendMail.py <DirectoryPath> <TimeInterval(in minutes)> <ReceiverEmail>
+``` bash
+python DuplicateFileRemoval.py <DirectoryPath> <TimeInterval(min)> <ReceiverEmail>
 ```
 
-### 🔁 Example
-```bash
-python AddLogFileSendMail.py /home/user/Documents 10 myemail@example.com
+### Example
+
+``` bash
+python DuplicateFileRemoval.py D:/TestFolder 10 example@gmail.com
 ```
 
-This command:
-- Scans the `/home/user/Documents` directory every 10 minutes
-- Deletes any duplicate files
-- Logs the operations
-- Emails the log to `myemail@example.com`
+------------------------------------------------------------------------
 
----
+## ⚙️ How It Works
 
-## 💡 Command Line Options
+1.  The script traverses the directory recursively.
+2.  Each file's MD5 checksum is calculated.
+3.  Files with identical checksums are grouped as duplicates.
+4.  The script keeps one original file and deletes remaining copies.
+5.  A log file is generated with scan and deletion details.
+6.  The log file is emailed to the specified receiver.
+7.  The process repeats automatically based on schedule interval.
 
-| Flag       | Description                                                                 |
-|------------|-----------------------------------------------------------------------------|
-| `--h` or `--H` | Displays help information about the script.                              |
-| `--u` or `--U` | Displays usage instructions with an example.                             |
+------------------------------------------------------------------------
 
-### Example:
-```bash
-python AddLogFileSendMail.py --h
-python AddLogFileSendMail.py --u
-```
+## 🔒 Security Note
 
----
+Do NOT store email credentials directly in code. Use environment
+variables for production usage.
 
-## 📝 Notes
+------------------------------------------------------------------------
 
-- Ensure that the sender's email (default: `roronoagreatestswordsman@gmail.com`) allows **less secure apps** or **app password** if using 2FA.
-- The email credentials are hardcoded — it is recommended to use environment variables or a `.env` file for production use.
-- Make sure the directory path is **absolute** (not relative).
+## 🎯 Learning Outcomes
 
----
+-   File system traversal
+-   Hashing algorithms
+-   Automation scripting
+-   Logging practices
+-   Email integration
+-   Scheduled task execution
 
-## 📧 Email Configuration
+------------------------------------------------------------------------
 
-The email is sent using:
-- SMTP Server: `smtp.gmail.com`
-- Port: `465` (SSL)
-- From: `roronoagreatestswordsman@gmail.com`
+## 👨‍💻 Author
 
-**Update the script with your own email & app password for secure use.**
+Shubham Londhe
 
----
-
-## 🏁 Output
-
-- Duplicate files will be deleted.
-- Log file will be created in the `Marvellous/` directory.
-- Email will be sent with the log file attached.
-
----
-
-## 👨‍💻 Developed By
-
-**Shubham Londhe**  
-_Automating your daily digital tasks._
+------------------------------------------------------------------------
